@@ -1,16 +1,13 @@
-let changeColor = document.getElementById('changeColor');
+let HTMLElementInputCheckbox = document.getElementById('inputCheckboxEnabled');
 
-chrome.storage.sync.get('color', function (data) {
-    changeColor.style.backgroundColor = data.color;
-    changeColor.setAttribute('value', data.color);
+chrome.storage.sync.get('checkboxEnabledState', function (data) {
+    HTMLElementInputCheckbox.checked = data.checkboxEnabledState;
+    console.log(data)
 });
 
-changeColor.onclick = function (element) {
-    console.log("clicked")
-    let color = element.target.value;
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.executeScript(
-            tabs[0].id,
-            { code: 'document.body.style.backgroundColor = "' + color + '";' });
+HTMLElementInputCheckbox.onclick = function (element) {
+    console.log('ahoy! that a click')
+    chrome.storage.sync.set({ checkboxEnabledState: true }, function () {
+        console.log("The checkboxEnabledState was set to true");
     });
 };
