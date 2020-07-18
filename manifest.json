@@ -1,7 +1,7 @@
   {
-    "name": "Getting Started Example",
+    "name": "Social media environment design",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "Conscious browsing!",
     "permissions": [
       "storage",
       "declarativeContent",
@@ -29,5 +29,15 @@
       "48": "images/get_started48.png",
       "128": "images/get_started128.png"
     },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://www.youtube.com/*"
+        ],
+        "js": [
+          "contentScript.js"
+        ]
+      }
+    ],
     "manifest_version": 2
   }
