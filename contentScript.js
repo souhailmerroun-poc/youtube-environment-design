@@ -1,13 +1,14 @@
-console.log('hi from content script');
+console.log('hi');
+let element1 = document.querySelector("#primary > ytd-rich-grid-renderer");
+if (element1 !== null) {
+    element1.style.display = "none";
+}
 
-chrome.storage.sync.get('checkboxEnabledState', function (data) {
-    console.log(data)
 
-    if (data.checkboxEnabledState === true) {
-        let element = document.querySelector("#primary > ytd-rich-grid-renderer");
-        element.style.display = "none"
-    }
-    else {
-        //do nothing
-    }
-});
+/**
+ * Remove video related videos
+ */
+let element2 = document.querySelector("#columns > #secondary");
+if (element2 !== null) {
+    element2.style.display = "none";
+}
